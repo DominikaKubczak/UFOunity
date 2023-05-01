@@ -20,6 +20,14 @@ public class PlayerControler : MonoBehaviour
         rb2d.AddForce(movement * 15);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PickUp"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
