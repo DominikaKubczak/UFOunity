@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
     Rigidbody2D rb2d;
+    private int count = 0;
     
-    // Start is called before the first frame update
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -24,6 +25,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.CompareTag("PickUp"))
         {
+            count++;
             Destroy(collision.gameObject);
         }
     }
