@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : MonoBehaviour
 {
+    public Text scoreText;
+    public Text winText;
     Rigidbody2D rb2d;
     private int count = 0;
     
@@ -27,8 +31,23 @@ public class PlayerControler : MonoBehaviour
         {
             count++;
             Destroy(collision.gameObject);
+            UpdateScoreText();
         }
     }
+
+    void UpdateScoreText()
+    { 
+        scoreText.text = "Wynik: " + count;
+        if (count == 3)
+        {
+            winText.gameObject.SetActive(true);
+            scoreText.gameObject.SetActive(false);
+            SceneManager.LoadScene("Level02");
+        }
+    }
+
+    
+   
 
     // Update is called once per frame
     void Update()
