@@ -42,11 +42,15 @@ public class PlayerControler : MonoBehaviour
         {
             winText.gameObject.SetActive(true);
             scoreText.gameObject.SetActive(false);
-            SceneManager.LoadScene("Level02");
+            StartCoroutine(StopTime());
         }
     }
 
-    
+    IEnumerator StopTime()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Level02");
+    }
    
 
     // Update is called once per frame
